@@ -1,0 +1,87 @@
+
+/* DISEÑO GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F7F5EE;
+    font-family: Arial, sans-serif;
+    color: #20231F;
+}
+
+.nosotros {
+    padding: 70px 8%;
+    text-align: center;
+}
+
+/* TITULO PRINCIPAL */
+.nosotros h1 {
+    font-size: 45px;
+    color: #365B49;
+    margin-bottom: 20px;
+}
+
+/* TEXTO DE PRESENTACION */
+.introduccion {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 45px;
+}
+
+/* CONTENEDOR DE LAS TARJETAS */
+.contenido-nosotros {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* DISEÑO DE CADA TARJETA */
+.tarjeta {
+    background-color: #D8E9DF;
+    padding: 35px 25px;
+    border-radius: 20px;
+    width: 280px;
+    border: 1px solid #A8C8B5;
+    transition: 0.3s;
+}
+
+/* TITULOS DE LAS TARJETAS */
+.tarjeta h2 {
+    color: #365B49;
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+/* TEXTOS DE LAS TARJETAS */
+.tarjeta p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* EFECTO AL PASAR EL MOUSE */
+.tarjeta:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* DISEÑO PARA CELULARES */
+@media (max-width: 768px) {
+
+    .nosotros {
+        padding: 45px 5%;
+    }
+
+    .nosotros h1 {
+        font-size: 34px;
+    }
+
+    .tarjeta {
+        width: 100%;
+    }
+
+}
