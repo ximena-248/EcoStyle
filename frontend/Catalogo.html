@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - EcoStyle</title>
+    <link rel="stylesheet" href="Catalogo.css">
+</head>
+
+<body>
+
+    <!-- Encabezado exclusivo del catálogo con contador de carrito -->
+    <header class="catalog-header">
+        <div class="catalog-badge">Colección Sostenible</div>
+        <div class="header-actions">
+            <a href="index.html" class="back-home">← Inicio</a>
+            <button id="cart-btn" class="cart-btn">🛒 Carrito (<span id="cart-count">0</span>)</button>
+        </div>
+    </header>
+
+    <h1>Estilo exclusivo, Doble vida en cada prenda</h1>
+
+    <main class="catalog-grid">
+        <article class="product-card" data-name="Buso Oversized Street Art" data-price="145000">
+            <img src="./assets/images/Buso-estampado.jpg" alt="Buso Oversized Street Art" class="product-image">
+            <div class="product-info">
+                <div>
+                    <h2 class="product-title">Buso Oversized Street Art</h2>
+                    <p class="product-desc">Diseño exclusivo en contraste oscuro con tipografías urbanas y parches
+                        gráficos de alto impacto.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">$145.000 COP</span>
+                    <button class="btn-detail">Agregar</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="product-card" data-name="Pantalón Cargo The Golden Boy" data-price="160000">
+            <img src="./assets/images/pantalon-cargo.jpg" alt="Pantalón Cargo The Golden Boy" class="product-image">
+            <div class="product-info">
+                <div>
+                    <h2 class="product-title">Pantalón Cargo "The Golden Boy"</h2>
+                    <p class="product-desc">Corte holgado streetwear con gráfica monocromática en bolsillos y detalles
+                        urbanos de calle.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">$160.000 COP</span>
+                    <button class="btn-detail">Agregar</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="product-card" data-name="Camisa Custom Patch" data-price="120000">
+            <img src="./assets/images/camisa-chica urbano.jpg" alt="Camisa Streetwear Urbano" class="product-image">
+            <div class="product-info">
+                <div>
+                    <h2 class="product-title">Camisa Custom Patch</h2>
+                    <p class="product-desc">Pieza única reconstruida con apliques gráficos estilo sticker y tipografía
+                        urbana aplicada.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">$120.000 COP</span>
+                    <button class="btn-detail">Agregar</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="product-card" data-name="Camisa Oversized Blanca" data-price="115000">
+            <img src="./assets/images/camisa-chica blanca.jpg" alt="Camisa Blanca Streetwear" class="product-image">
+            <div class="product-info">
+                <div>
+                    <h2 class="product-title">Camisa Oversized Blanca</h2>
+                    <p class="product-desc">Diseño minimalista urbano con corte holgado y detalles de marca en
+                        contraste.</p>
+                </div>
+                <div class="product-footer">
+                    <span class="product-price">$115.000 COP</span>
+                    <button class="btn-detail">Agregar</button>
+                </div>
+            </div>
+        </article>
+    </main>
+    <div id="cart-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tu Carrito EcoStyle</h3>
+                <button id="close-modal" class="close-btn"></button>
+            </div>
+            <ul id="cart-items-list">
+
+            </ul>
+            <!-- Formulario de datos de envío y pago -->
+            <form id="checkout-form" class="checkout-form">
+                <h4>Datos de envío y pago</h4>
+                <input type="text" id="buyer-name" placeholder="Tu nombre completo" required>
+                <input type="text" id="buyer-address" placeholder="Dirección (Ej: Calle 100 # 15-20)" required>
+                <input type="tel" id="buyer-phone" placeholder="Teléfono / WhatsApp" required>
+
+                <!-- Selector de método de pago -->
+                <select id="payment-method" class="payment-select" required>
+                    <option value="" disabled selected>Selecciona método de pago</option>
+                    <option value="Nequi">Nequi</option>
+                    <option value="Daviplata">Daviplata</option>
+                    <option value="Contra entrega">Pago contra entrega (Efectivo)</option>
+                    <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                </select>
+
+                <button type="submit" id="checkout-btn" class="checkout-btn">Confirmar Pedido</button>
+            </form>
+            <div class="modal-footer">
+                <p>Total: <span id="cart-total">$0 COP</span></p>
+                <button id="checkout-btn" class="checkout-btn">Finalizar Pedido</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
