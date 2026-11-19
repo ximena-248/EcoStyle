@@ -9,7 +9,7 @@ const cartItemsList = document.getElementById('cart-items-list');
 const cartTotal = document.getElementById('cart-total');
 const checkoutBtn = document.getElementById('checkout-btn');
 const addButtons = document.querySelectorAll('.btn-detail');
-
+const checkoutForm = document.getElementById('checkout-form');
 // Escuchar clics en los botones "Agregar" de cada producto
 addButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
@@ -84,7 +84,7 @@ checkoutBtn.addEventListener('click', () => {
     }
     });
 // Procesar el formulario de compra, datos y método de pago
-checkoutForm.addEventListener('submit', (e) => {
+checkoutForm.addEventListener('submit', async (e) => {
     e.preventDefault(); // Evita que la página se recargue sola
 
     if (cart.length === 0) {
@@ -93,21 +93,41 @@ checkoutForm.addEventListener('submit', (e) => {
     }
 
     // Capturamos los datos que escribió el usuario
-    const name = document.getElementById('buyer-name').value;
-    const address = document.getElementById('buyer-address').value;
-    const phone = document.getElementById('buyer-phone').value;
-    const paymentMethod = document.getElementById('payment-method').value;
+    const datosPedido = {
+    nombre: document.getElementById('nombre')?.value || '',
+    direccion: document.getElementById('direccion')?.value ||'',
+    telefono: document.getElementById('telefono')?.value ||'',
+    metodopago:  document.getElementById('metodopago')?.value || '',
+    carrito: cart
+};
+try {
+    const respuesta = await fetch('http://localhost:3000/api/pedidos', {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(datosPedido)
+    });
 
-    // Mensaje completo con la información de envío y el pago elegido
-    alert(`¡Gracias por tu compra, ${name}!\n\n📋 Resumen del envío:\n📍 Dirección: ${address}\n📞 Teléfono: ${phone}\n💳 Método de pago: ${paymentMethod}\n\nNos pondremos en contacto contigo por WhatsApp para coordinar el pago y la entrega de tus prendas sostenibles.`);
+    const resultado = await respuesta.json();
 
+    if (resultado.success) {
+        const mensajeBox = document.getElementById('mensaje-exito');
+        if (mensajeBox) {
+            mensajeBox.style.display = 'block';
+            mensajeBox.innerHTML = `Muchas Gracias, <strong>${datosPedido.nombre}</strong>! Tu pedido de EcoStyle ha sido registrado. Nos comunicaremos al <strong>${datosPedido.telefono}</strong> para coordinar el envio.`;
+        }
+        
     // Limpiar carrito y formulario
     cart = [];
     updateCartUI();
     checkoutForm.reset(); 
-    cartModal.classList.remove('active');
-}); 
-alert("¡Muchas gracias por tu compra en EcoStyle! Nos pondremos en contacto contigo para coordinar el envío de tus prendas sostenibles.");
-    cart = []; // Vaciar carrito
-    updateCartUI();
-    cartModal.classList.remove('active');
+    if (typeof cartmodal !== 'undefined') {
+        cartModal.classList.remove('active');
+    }
+    }
+} catch (error) {
+    console.error("Error al conectar con el servidor", error);
+    alert("Hubo un prolema procesando tu pedido. Verifica que el sevidor este encendido.");
+}
+});

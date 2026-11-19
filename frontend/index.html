@@ -79,5 +79,28 @@
         </div>
     </div>
 </section>
+<section style="margin-top: 3rem; width: 100%; max-width: 600px; margin-left: auto; margin-rigth: auto; margin-bottom: 3rem;">
+    <form id="checkout-form" style="backgound: #141414; padding: 2rem; border radius: 12px; border: 1px solid rgba(225, 255, 0.1);">
+        <h3 style="color: #f0f0f0; margin-bottom: 1.5rem; text align: center;">Datos de Envio y Pago</h3>
+        <div style="margin-bottom: 1rem;">
+            <input type="text" id="nombre" placeholder="nombre completo" required style="width: 100%; padding: 0.8rem; backgound: #0a0a0a; border: 1px solid #333; color: #fff; border-radius: 6px;">
+        </div>
+        <div tyle="margin-bottom: 1rem;">
+            <input type="text" id="direccion" placeholder="Direccion de entrega" required style="width: 100%; padding: 0.8rem; backgound: #0a0a0a; border: 1px solid #333; color: #fff; border-radius: 6px;">
+        </div>
+         <div tyle="margin-bottom: 1rem;">
+            <input type="text" id="telefono" placeholder="telefono de contacto" required style="width: 100%; padding: 0.8rem; backgound: #0a0a0a; border: 1px solid #333; color: #fff; border-radius: 6px;">
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+            <select id="metodopago" required style="width: 100%; padding: 0.8rem; background: #0a0a0a; border: 1px solid #333; color: #fff; border-radius: 6px;">
+                <option value="">Selecciona medio de pago</option>
+                <option value="nequi">Nequi / Daviplata</option>
+                <option value="transferencia">Transferencia Bancaria</option>
+                <option value="contraentrega">Pago contra Entrega</option>
+            </select>
+        </div>
+        <buttom type="submit" style="width: 100%; padding: 0.9rem; background: #8a2be2; color: #fff; border:none; border-radius: 6px; font-weight: bold; cursor: pointer;">Confirmar Pedido</button>
+        </form>
+    </selection>
 </body>
 </html>
